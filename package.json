@@ -1,0 +1,23 @@
+{
+  "name": "electronjs-sandbox",
+  "version": "1.0.0",
+  "description": "Try electronjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tayutaedomo/electronjs-sandbox.git"
+  },
+  "author": "Tayutaedomo <tayutaedomo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tayutaedomo/electronjs-sandbox/issues"
+  },
+  "homepage": "https://github.com/tayutaedomo/electronjs-sandbox#readme",
+  "devDependencies": {
+    "electron": "^1.7.9"
+  }
+}
