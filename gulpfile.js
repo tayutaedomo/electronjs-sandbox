@@ -11,7 +11,8 @@ gulp.task('package:darwin', [], function (done) {
     name: 'Electron',
     arch: 'x64',              // x64 or ia32
     platform: 'darwin',       // darwin or win32 or linux
-    version: '1.7.9'          // Electron version
+    version: '1.7.9',         // Electron version
+    overwrite: true
   }, function (err, path) {
     done();
   });
