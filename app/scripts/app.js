@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+  var electron = require('electron');
+  var remote = electron.remote;
+
   var template_base = './scripts';
 
   var app = angular.module('app', [
@@ -19,6 +22,10 @@
   app.controller('MainController', ['$scope', MainController]);
 
   function MainController($scope) {
+    this.openDialog = function() {
+      remote.dialog.showMessageBox(function () {
+      });
+    };
   }
 
 })();
