@@ -3,6 +3,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+const Menu = electron.Menu;
 
 const path = require('path')
 const url = require('url')
@@ -11,31 +12,11 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-var child_process = require('child_process');
-var pash = require('path');
 
-function promise_exec(cmd, opts) {
-  opts || (opts = {});
+function createWindow() {
+  // Create menu.
+  createMenu();
 
-  opts.maxBuffer = 1024 * 1024 * 512; // 512MB
-
-  return new Promise(function(resolve, reject) {
-    var child = child_process.exec(cmd, opts, function(err, stdout, stderr) {
-      if (err) reject(err);
-      else resolve({ stdout: stdout, stderr: stderr });
-    });
-
-    if (opts.stdout) {
-      child.stdout.pipe(opts.stdout);
-    }
-
-    if (opts.stderr) {
-      child.stderr.pipe(opts.stderr);
-    }
-  });
-}
-
-function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
@@ -56,6 +37,65 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+}
+
+// Refer: https://qiita.com/Quramy/items/a4be32769366cfe55778
+function createMenu() {
+  // メニュー情報の作成
+  var template = [
+    {
+      label: 'ReadUs',
+      submenu: [
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click: function () {
+            app.quit();
+          }
+        }
+      ]
+    },
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Open',
+          accelerator: 'Command+O',
+          click: function() {
+            // 「ファイルを開く」ダイアログの呼び出し
+            //require('dialog').showOpenDialog({ properties: ['openDirectory']}, function(baseDir) {
+            electron.dialog.showOpenDialog({ properties: ['openDirectory']}, function(baseDir) {
+              if(baseDir && baseDir[0]) {
+                console.log(baseDir[0]);
+              }
+            });
+          }
+        }
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Reload',
+          accelerator: 'Command+R',
+          click: function() {
+            BrowserWindow.getFocusedWindow().reload();
+          }
+        },
+        {
+          label: 'Toggle DevTools',
+          accelerator: 'Alt+Command+I',
+          click: function() {
+            BrowserWindow.getFocusedWindow().toggleDevTools();
+          }
+        }
+      ]
+    }
+  ];
+
+  var menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 }
 
 // This method will be called when Electron has finished
