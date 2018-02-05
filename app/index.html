@@ -7,14 +7,19 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./bower_components/AngularJS-Toaster/toaster.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <ng-view></ng-view>
 
+    <toaster-container></toaster-container>
+
     <!-- vendor scripts -->
     <script src="./bower_components/angular/angular.min.js"></script>
     <script src="./bower_components/angular-route/angular-route.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/AngularJS-Toaster/toaster.min.js"></script>
     <!-- end vendor -->
 
     <script src="./scripts/app.js"></script>

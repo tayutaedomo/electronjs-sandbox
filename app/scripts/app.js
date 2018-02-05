@@ -7,7 +7,9 @@
   var template_base = './scripts';
 
   var app = angular.module('app', [
-    'ngRoute'
+    'ngRoute',
+    'toaster',
+    'ngAnimate'
   ]);
 
   app.config(['$routeProvider', function ($routeProvider) {
@@ -19,14 +21,20 @@
     $routeProvider.otherwise({ redirectTo: '/' });
   }]);
 
-  app.controller('MainController', ['$scope', MainController]);
+  app.controller('MainController', MainController);
 
-  function MainController($scope) {
+  function MainController($scope, toaster) {
     this.openDialog = function() {
       remote.dialog.showMessageBox(function () {
       });
     };
+
+    toaster.pop('info', "title", "text");
+    toaster.pop('success', "title", "text");
+    toaster.pop('warning', "title", "text");
+    toaster.pop('error', "title", "text");
   }
+  MainController.$inject = ['$scope', 'toaster'];
 
 })();
 
