@@ -122,3 +122,30 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+const express = require('express');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const port = 3000;
+const webApp = express();
+
+// view engine setup
+webApp.set('views', path.join(__dirname, 'web', 'views'));
+webApp.set('view engine', 'ejs');
+
+webApp.use(logger('dev'));
+webApp.use(bodyParser.json());
+webApp.use(bodyParser.urlencoded({ extended: false }));
+webApp.use(cookieParser());
+webApp.use(express.static(path.join(__dirname, 'web', 'public')));
+
+const routes = require('./web/routes/index');
+
+webApp.use('/', routes);
+
+const server = webApp.listen(port, function () {
+  console.log('app listening at http://%s:%s', server.address().host, server.address().port);
+});
+

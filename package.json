@@ -23,5 +23,12 @@
     "electron": "^3.0.9",
     "electron-packager": "^12.2.0",
     "gulp": "^4.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
   }
 }
