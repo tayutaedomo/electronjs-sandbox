@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var packager = require('electron-packager');
 
 
-gulp.task('package:darwin', [], function (done) {
+gulp.task('package:darwin', function(done) {
   packager({
     dir: 'app',               // Directory of Application
     out: 'release/darwin',    // Directory of .app or .exe
