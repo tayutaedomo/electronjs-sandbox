@@ -73,7 +73,6 @@ function createConfigWindow() {
     'width': 400,
     'height': 300,
     //'position': 'topLeft',
-    //'layout': 'simple',
     //'showDevTools': true,
     'resizable': false
   });

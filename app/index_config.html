@@ -13,11 +13,15 @@
 
 <h2>Config Window</h2>
 
-<button class="btn btn-info" onclick="close()">Close</button>
+<button class="btn btn-info" onclick="closeWindow()">Close</button>
 
 <script>
-  function close() {
+  function closeWindow() {
+    console.debug('close()');
 
+    var remote = require('electron').remote;
+    var currentWindow = remote.getCurrentWindow();
+    currentWindow.close();
   }
 </script>
 </body>
