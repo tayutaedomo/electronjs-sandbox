@@ -12,6 +12,7 @@ const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let configWindow;
 
 
 function createWindow() {
@@ -63,6 +64,27 @@ function createWindow() {
   // })
 }
 
+function createConfigWindow() {
+  if (configWindow) return;
+
+  const tmpl_path = 'file://' + path.join(__dirname, 'index_config.html');
+
+  configWindow = windowManager.createNew('config', 'Config', tmpl_path, false, {
+    'width': 400,
+    'height': 300,
+    //'position': 'topLeft',
+    //'layout': 'simple',
+    //'showDevTools': true,
+    'resizable': false
+  });
+
+  configWindow.open();
+
+  configWindow.object.on('closed', function () {
+    configWindow = null;
+  });
+}
+
 // Refer: https://qiita.com/Quramy/items/a4be32769366cfe55778
 function createMenu() {
   // メニュー情報の作成
@@ -86,6 +108,7 @@ function createMenu() {
               return 'F2';
           })(),
           click: function() {
+            createConfigWindow();
           }
         }
       ]
