@@ -21,6 +21,7 @@
   "devDependencies": {
     "bluebird": "^3.5.1",
     "electron": "^3.0.9",
+    "electron-builder": "^20.39.0",
     "electron-packager": "^12.2.0",
     "electron-window-manager": "^1.0.6",
     "gulp": "^4.0.0"
