@@ -58,6 +58,7 @@ typings/
 .env
 
 .idea
+build
 release
 bower_components/
 

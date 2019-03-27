@@ -1,12 +1,16 @@
 {
   "name": "electronjs-sandbox",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Try electronjs",
   "main": "app/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/electron app/main.js",
-    "packaging": "./node_modules/.bin/gulp package:darwin"
+    "packaging": "./node_modules/.bin/gulp package:darwin",
+    "pack": "./node_modules/.bin/electron-builder --dir",
+    "dist": "./node_modules/.bin/electron-builder",
+    "dist:mac": "./node_modules/.bin/electron-builder --mac --x64 -c.mac.identity=null",
+    "dist:win": "./node_modules/.bin/electron-builder --win --x64"
   },
   "repository": {
     "type": "git",
@@ -32,5 +36,43 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "morgan": "^1.9.1"
+  },
+  "build": {
+    "productName": "MyElectronSandbox",
+    "appId": "com.example.electronsandbox",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      "app/bin/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": "nsis"
+    }
   }
 }
