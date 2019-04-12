@@ -27,13 +27,13 @@
     "electron": "^3.0.9",
     "electron-builder": "^20.39.0",
     "electron-packager": "^12.2.0",
-    "electron-window-manager": "^1.0.6",
     "gulp": "^4.0.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
+    "electron-window-manager": "^1.0.6",
     "express": "^4.16.4",
     "morgan": "^1.9.1"
   },
