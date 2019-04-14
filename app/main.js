@@ -15,6 +15,19 @@ let mainWindow;
 let configWindow;
 
 
+
+// getPath, getAppPath
+console.log('app.getAppPath:',        app.getAppPath());
+console.log('app.getPath home:',      app.getPath('home'));
+console.log('app.getPath appData:',   app.getPath('appData'));
+console.log('app.getPath userData:',  app.getPath('userData'));
+console.log('app.getPath temp:',      app.getPath('temp'));
+console.log('app.getPath exe:',       app.getPath('exe'));
+console.log('app.getPath module:',    app.getPath('module'));
+console.log('app.getPath desktop:',   app.getPath('desktop'));
+
+
+
 function createWindow() {
   // Create menu.
   createMenu();

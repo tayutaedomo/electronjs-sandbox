@@ -33,6 +33,17 @@
     toaster.pop('success', "title", "text");
     toaster.pop('warning', "title", "text");
     toaster.pop('error', "title", "text");
+
+
+    // getPath, getAppPath
+    console.log('remote.app.getAppPath:',        remote.app.getAppPath());
+    console.log('remote.app.getPath home:',      remote.app.getPath('home'));
+    console.log('remote.app.getPath appData:',   remote.app.getPath('appData'));
+    console.log('remote.app.getPath userData:',  remote.app.getPath('userData'));
+    console.log('remote.app.getPath temp:',      remote.app.getPath('temp'));
+    console.log('remote.app.getPath exe:',       remote.app.getPath('exe'));
+    console.log('remote.app.getPath module:',    remote.app.getPath('module'));
+    console.log('remote.app.getPath desktop:',   remote.app.getPath('desktop'));
   }
   MainController.$inject = ['$scope', 'toaster'];
 
