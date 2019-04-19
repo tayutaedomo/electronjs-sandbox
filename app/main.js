@@ -29,8 +29,9 @@ console.log('app.getPath desktop:',   app.getPath('desktop'));
 
 
 function createWindow() {
-  // Create menu.
   createMenu();
+
+  initStore();
 
   //windowManager.init({});
   //console.log('windowManager.init', windowManager);
@@ -167,6 +168,16 @@ function createMenu() {
   var menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 }
+
+
+function initStore() {
+  const Store = require('electron-store');
+  const store = new Store();
+
+  store.set('unicorn', '🦄');
+  console.log(store.get('unicorn'));
+}
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

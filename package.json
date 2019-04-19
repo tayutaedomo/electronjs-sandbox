@@ -33,6 +33,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
+    "electron-store": "^3.2.0",
     "electron-window-manager": "^1.0.6",
     "express": "^4.16.4",
     "morgan": "^1.9.1"
