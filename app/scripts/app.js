@@ -4,6 +4,8 @@
   var electron = require('electron');
   var remote = electron.remote;
 
+  const Store = require('electron-store');
+
   var template_base = './scripts';
 
   var app = angular.module('app', [
@@ -44,7 +46,12 @@
     console.log('remote.app.getPath exe:',       remote.app.getPath('exe'));
     console.log('remote.app.getPath module:',    remote.app.getPath('module'));
     console.log('remote.app.getPath desktop:',   remote.app.getPath('desktop'));
+
+
+    // electron-store
+    this.store = new Store();
   }
+
   MainController.$inject = ['$scope', 'toaster'];
 
 })();

@@ -6,5 +6,13 @@ Chromium <script>document.write(process.versions.chrome)</script>,
 and Electron <script>document.write(process.versions.electron)</script>.
 
 <div>
+  <h3>Dialog</h3>
   <button class="btn btn-success" ng-click="_ctrl.openDialog()">Open Dialog</button>
 </div>
+
+<div>
+  <h3>electron-store</h3>
+  <label>{{ _ctrl.store.get('unicorn') }}</label>
+  <label>{{ _ctrl.store.path }}</label>
+</div>
+
