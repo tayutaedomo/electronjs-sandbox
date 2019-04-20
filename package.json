@@ -17,13 +17,11 @@
     "url": "git+https://github.com/tayutaedomo/electronjs-sandbox.git"
   },
   "author": "Tayutaedomo <tayutaedomo@gmail.com>",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/tayutaedomo/electronjs-sandbox/issues"
   },
   "homepage": "https://github.com/tayutaedomo/electronjs-sandbox#readme",
   "devDependencies": {
-    "bluebird": "^3.5.1",
     "electron": "^3.0.9",
     "electron-builder": "^20.39.0",
     "electron-packager": "^12.2.0",
@@ -31,6 +29,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bluebird": "^3.5.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
     "electron-store": "^3.2.0",
@@ -50,7 +49,7 @@
       "package.json"
     ],
     "extraResources": [
-      "app/bin/*"
+      "app/bin/**/*"
     ],
     "dmg": {
       "contents": [
