@@ -59,12 +59,18 @@
       let adb_path = null;
 
       if (process.platform === 'win32') {
-        adb_path = path.join(__dirname, '/bin/platform-tools/win/adb.exe');
+        adb_path = 'bin/platform-tools/win/adb.exe';
       } else if (process.platform === 'darwin') {
-        adb_path = path.join(__dirname, '/bin/platform-tools/darwin/adb');
+        adb_path = 'bin/platform-tools/darwin/adb';
       }
 
       if (! adb_path) return;
+
+      if (remote.app.isPackaged) {
+        adb_path = path.join(remote.app.getAppPath(), '..', 'app', adb_path);
+      } else {
+        adb_path = path.join(__dirname, adb_path);
+      }
 
       const cmd = `"${adb_path}" devices`;
 
