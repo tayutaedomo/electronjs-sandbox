@@ -50,6 +50,7 @@
       "package.json"
     ],
     "extraResources": [
+      "app/assets/image/*",
       "app/bin/*"
     ],
     "dmg": {
