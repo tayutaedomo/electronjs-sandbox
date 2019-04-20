@@ -50,6 +50,30 @@
 
     // electron-store
     this.store = new Store();
+
+
+    this.execExtraResource = () => {
+      const path = require('path');
+      const lib_process = require('./lib/process');
+
+      let adb_path = null;
+
+      if (process.platform === 'win32') {
+        adb_path = path.join(__dirname, '/bin/platform-tools/win/adb.exe');
+      } else if (process.platform === 'darwin') {
+        adb_path = path.join(__dirname, '/bin/platform-tools/darwin/adb');
+      }
+
+      if (! adb_path) return;
+
+      const cmd = `"${adb_path}" devices`;
+
+      lib_process.promise_exec(cmd).then(result => {
+        console.log(result);
+      }).catch(err => {
+        console.error(err);
+      });
+    };
   }
 
   MainController.$inject = ['$scope', 'toaster'];
