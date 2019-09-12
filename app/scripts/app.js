@@ -25,7 +25,10 @@
 
   app.controller('MainController', MainController);
 
-  function MainController($scope, toaster) {
+  function MainController($scope, $document, toaster) {
+    const that = this;
+
+
     this.openDialog = function() {
       remote.dialog.showMessageBox(function () {
       });
@@ -80,9 +83,55 @@
         console.error(err);
       });
     };
+
+
+    // Local video file
+    this.local_video_file = null;
+
+    this.on_video_file_load = () => {
+      if (! that.local_video_file) return;
+
+      const video = document.querySelector('#video');
+      video.src = `file://${that.local_video_file.path}`;
+    };
   }
 
-  MainController.$inject = ['$scope', 'toaster'];
+  MainController.$inject = ['$scope', '$document', 'toaster'];
+
+
+  // Refer: https://stackoverflow.com/questions/17063000/ng-model-for-input-type-file-with-directive-demo
+  app.directive('fileread', [function () {
+    // return {
+    //   scope: {
+    //     fileread: "="
+    //   },
+    //   link: function (scope, element, attributes) {
+    //     element.bind('change', function (changeEvent) {
+    //       var reader = new FileReader();
+    //       reader.onload = function(loadEvent) {
+    //         scope.$apply(function () {
+    //           scope.fileread = loadEvent.target.result;
+    //         });
+    //       };
+    //       reader.readAsDataURL(changeEvent.target.files[0]);
+    //     });
+    //   }
+    // }
+    return {
+      scope: {
+        fileread: '='
+      },
+      link: function (scope, element, attributes) {
+        element.bind('change', function (changeEvent) {
+          scope.$apply(function () {
+            scope.fileread = changeEvent.target.files[0];
+            // or all selected files:
+            // scope.fileread = changeEvent.target.files;
+          });
+        });
+      }
+    }
+  }]);
 
 })();
 

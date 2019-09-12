@@ -22,3 +22,15 @@ and Electron <script>document.write(process.versions.electron)</script>.
   <button ng-click="_ctrl.execExtraResource()">Exec</button>
 </div>
 
+
+<div>
+  <h3>Load local video file</h3>
+  <div>
+    <input type="file" fileread="_ctrl.local_video_file" style="display: inline-block">
+    <button ng-click="_ctrl.on_video_file_load()" style="display: inline-block">Load</button>
+  </div>
+  <div>
+    <video id="video" width="300" height="250" controls></video>
+  </div>
+</div>
+
