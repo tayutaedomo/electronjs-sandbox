@@ -34,3 +34,10 @@ and Electron <script>document.write(process.versions.electron)</script>.
   </div>
 </div>
 
+
+<div>
+  <h3>Choose Directory</h3>
+  <input type="file" dirread="_ctrl.selected_dir" webkitdirectory directory>
+  <p ng-if="_ctrl.selected_dir">{{ _ctrl.selected_dir.path }}</p>
+</div>
+
