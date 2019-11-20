@@ -94,6 +94,9 @@
       const video = document.querySelector('#video');
       video.src = `file://${that.local_video_file.path}`;
     };
+
+
+    this.selected_dir = null;
   }
 
   MainController.$inject = ['$scope', '$document', 'toaster'];
@@ -133,5 +136,20 @@
     }
   }]);
 
+  app.directive('dirread', [function () {
+    return {
+      scope: {
+        dirread: '='
+      },
+      link: function (scope, element, attributes) {
+        element.bind('change', function (changeEvent) {
+          scope.$apply(function () {
+            console.log('dirread', changeEvent.target.files[0]);
+            scope.dirread = changeEvent.target.files[0];
+          });
+        });
+      }
+    }
+  }]);
 })();
 
